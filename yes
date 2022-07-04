@@ -1,0 +1,2444 @@
+if game.PlaceId == 2788229376 then
+    getgenv().adverting = false
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+
+    getgenv().emoji = '💲'
+    local NewList = {}
+    for i,v in pairs(alts) do table.insert(NewList,v) end
+
+    game:service"RunService".Stepped:Connect(function()
+        for i,v in pairs(game:service"Players":GetChildren()) do
+            if table.find(NewList,v.UserId) and v.Character and v.Character:FindFirstChildWhichIsA("Humanoid") then
+                v.Character.Humanoid.DisplayName = '['..tostring(emoji)..']'..v.DisplayName
+            end
+        end
+    end)
+
+    getgenv().isDropping = false
+    local speed = 50
+    local c
+    local h
+    local bv
+    local bav
+    local cam
+    local flying
+    local p = game.Players.LocalPlayer
+    local buttons = {
+        W = false,
+        S = false,
+        A = false,
+        D = false,
+        Moving = false
+    }
+    
+    Players.PlayerAdded:Connect(function(player)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "User joined!",
+            Text = player.name .. " joined the game.",
+            Duration = 5
+        })
+    end)
+
+    local function PlayerAdded(Player)
+        local function Chatted(Message)
+            local plr = game.Players.LocalPlayer
+            local character = plr.Character or plr.CharacterAdded:Wait()
+            local humanoid = character:FindFirstChild("Humanoid")
+            local PlayerHumanoid = plr.Character:WaitForChild("Humanoid")
+            local targetHumanoid = Player.Character:WaitForChild("Humanoid")
+            local LastTargetPosition = targetHumanoid.RootPart.CFrame
+            local Length = 3
+
+            if Player.UserId == getgenv().controller then
+
+                local finalMsg = Message:lower()
+
+                for i, v in pairs(getgenv().alts) do
+                    if v == plr.UserId then
+                        if finalMsg == getgenv().prefix .. "fly" .. plr.Name:lower() then
+                            startFly()
+
+                        end
+                        if finalMsg == getgenv().prefix .. "fly" then
+                            startFly()
+
+                        end
+                        if finalMsg == getgenv().prefix .. "setup admin" then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            for i, v in pairs(getgenv().alts) do
+                                if i == "Alt1" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-883, -38, -623)
+                                    end
+                                end
+                                if i == "Alt2" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-878, -38, -623)
+                                    end
+                                end
+                                if i == "Alt3" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-873, -38, -623)
+                                    end
+                                end
+                                if i == "Alt4" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-868, -38, -624)
+                                    end
+                                end
+                                if i == "Alt5" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-862, -38, -624)
+                                    end
+                                end
+                                if i == "Alt6" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-857, -38, -624)
+                                    end
+                                end
+                                if i == "Alt7" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-857, -38, -618)
+                                    end
+                                end
+                                if i == "Alt8" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-862, -38, -618)
+                                    end
+                                end
+                                if i == "Alt9" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-867, -38, -618)
+                                    end
+                                end
+                                if i == "Alt10" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-872, -38, -618)
+                                    end
+                                end
+                                if i == "Alt11" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-877, -38, -618)
+                                    end
+                                end
+                                if i == "Alt12" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-882, -38, -618)
+                                    end
+                                end
+                                if i == "Alt13" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-882, -38, -612)
+                                    end
+                                end
+                                if i == "Alt14" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-878, -38, -611)
+                                    end
+                                end
+                                if i == "Alt15" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-872, -38, -611)
+                                    end
+                                end
+                                if i == "Alt16" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-867, -38, -612)
+                                    end
+                                end
+                                if i == "Alt17" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-861, -38, -612)
+                                    end
+                                end
+                                if i == "Alt18" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-861, -38, -607)
+                                    end
+                                end
+                                if i == "Alt19" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-867, -38, -607)
+                                    end
+                                end
+                                if i == "Alt20" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-872, -38, -607)
+                                    end
+                                end
+                                if i == "Alt21" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-878, -38, -608)
+                                    end
+                                end
+                                if i == "Alt22" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-883, -38, -608)
+                                    end
+                                end
+                                if i == "Alt23" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-883, -38, -603)
+                                    end
+                                end
+                                if i == "Alt24" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-878, -38, -603)
+                                    end
+                                end
+                                if i == "Alt25" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-873, -38, -602)
+                                    end
+                                end
+                                if i == "Alt26" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-867, -38, -602)
+                                    end
+                                end
+                                if i == "Alt27" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-861, -38, -602)
+                                    end
+                                end
+                                if i == "Alt28" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-862, -38, -598)
+                                    end
+                                end
+                                if i == "Alt29" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-867, -38, -598)
+                                    end
+                                end
+                                if i == "Alt30" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-872, -38, -598)
+                                    end
+                                end
+                                if i == "Alt31" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-878, -38, -599)
+                                    end
+                                end
+                                if i == "Alt32" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-884, -38, -599)
+                                    end
+                                end
+                                if i == "Alt33" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-884, -38, -594)
+                                    end
+                                end
+                                if i == "Alt34" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-880, -38, -594)
+                                    end
+                                end
+                                if i == "Alt35" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-874, -38, -594)
+                                    end
+                                end
+                                if i == "Alt36" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-869, -38, -594)
+                                    end
+                                end
+                                if i == "Alt37" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-864, -38, -594)
+                                    end
+                                end
+                                if i == "Alt38" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-858, -38, -594)
+                                    end
+                                end
+                            end
+                        end
+
+                        if finalMsg == getgenv().prefix .. "setup bank" then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            for i, v in pairs(getgenv().alts) do
+                                if i == "Alt1" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-389, 21, -338)
+                                    end
+                                end
+                                if i == "Alt2" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-385, 21, -338)
+                                    end
+                                end
+                                if i == "Alt3" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-380, 21, -337)
+                                    end
+                                end
+                                if i == "Alt4" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-376, 21, -338)
+                                    end
+                                end
+                                if i == "Alt5" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-370, 21, -338)
+                                    end
+                                end
+                                if i == "Alt6" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-366, 21, -338)
+                                    end
+                                end
+                                if i == "Alt7" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-361, 21, -338)
+                                    end
+                                end
+                                if i == "Alt8" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-361, 21, -333)
+                                    end
+                                end
+                                if i == "Alt9" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-365, 21, -334)
+                                    end
+                                end
+                                if i == "Alt10" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-370, 21, -334)
+                                    end
+                                end
+                                if i == "Alt11" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-375, 21, -334)
+                                    end
+                                end
+                                if i == "Alt12" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-381, 21, -334)
+                                    end
+                                end
+                                if i == "Alt13" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-386, 21, -334)
+                                    end
+                                end
+                                if i == "Alt14" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-390, 21, -334)
+                                    end
+                                end
+                                if i == "Alt15" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-390, 21, -331)
+                                    end
+                                end
+                                if i == "Alt16" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-386, 21, -331)
+                                    end
+                                end
+                                if i == "Alt17" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-382, 21, -331)
+                                    end
+                                end
+                                if i == "Alt18" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-376, 21, -331)
+                                    end
+                                end
+                                if i == "Alt19" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-371, 21, -331)
+                                    end
+                                end
+                                if i == "Alt20" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-366, 21, -331)
+                                    end
+                                end
+                                if i == "Alt21" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-361, 21, -331)
+                                    end
+                                end
+                                if i == "Alt22" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-361, 21, -327)
+                                    end
+                                end
+                                if i == "Alt23" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-365, 21, -327)
+                                    end
+                                end
+                                if i == "Alt24" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-371, 21, -326)
+                                    end
+                                end
+                                if i == "Alt25" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-376, 21, -327)
+                                    end
+                                end
+                                if i == "Alt26" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-381, 21, -326)
+                                    end
+                                end
+                                if i == "Alt27" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-385, 21, -327)
+                                    end
+                                end
+                                if i == "Alt28" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-390, 21, -323)
+                                    end
+                                end
+                                if i == "Alt29" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-390, 21, -326)
+                                    end
+                                end
+                                if i == "Alt30" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-390, 21, -323)
+                                    end
+                                end
+                                if i == "Alt31" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-385, 21, -323)
+                                    end
+                                end
+                                if i == "Alt32" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-381, 21, -323)
+                                    end
+                                end
+                                if i == "Alt33" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-375, 21, -324)
+                                    end
+                                end
+                                if i == "Alt34" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-370, 21, -323)
+                                    end
+                                end
+                                if i == "Alt35" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-365, 21, -324)
+                                    end
+                                end
+                                if i == "Alt36" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-360, 21, -324)
+                                    end
+                                end
+                                if i == "Alt37" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-359, 21, -318)
+                                    end
+                                end
+                                if i == "Alt38" then
+                                    if v == plr.UserId then
+                                        game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                            CFrame.new(-364, 21, -319)
+                                    end
+                                end
+                            end
+                        end
+
+                        if finalMsg == getgenv().prefix .. "drop" then
+
+                            if getgenv().isDropping == false then
+
+                                getgenv().isDropping = true
+
+                                if getgenv().isDropping == true then
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true, 102, false, yomama)
+                                    local args = {
+                                        [1] = "drop",
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                end
+                                while getgenv().isDropping == true do
+
+                                    if game:GetService("Players").LocalPlayer.DataFolder.Currency.Value < 10000 then
+                                        local args = {
+                                            [1] = "no money",
+                                            [2] = "All"
+                                        }
+
+                                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents
+                                            .SayMessageRequest:FireServer(unpack(args))
+                                    end
+
+                                    local args = {
+                                        [1] = "DropMoney",
+                                        [2] = "10000"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+                                    wait(15)
+                                end
+                            else
+
+                                getgenv().isDropping = false
+                                if getgenv().isDropping == false then
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false, 102, false, yomama)
+                                    local args = {
+                                        [1] = "stop",
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                end
+
+                            end
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "drop " .. plr.Name:lower() then
+
+                            if getgenv().isDropping == false then
+
+                                getgenv().isDropping = true
+
+                                if getgenv().isDropping == true then
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true, 102, false, yomama)
+                                    local args = {
+                                        [1] = "drop",
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                end
+                                while getgenv().isDropping == true do
+
+                                    if game:GetService("Players").LocalPlayer.DataFolder.Currency.Value < 10000 then
+                                        local args = {
+                                            [1] = "no money",
+                                            [2] = "All"
+                                        }
+
+                                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents
+                                            .SayMessageRequest:FireServer(unpack(args))
+                                    end
+
+                                    local args = {
+                                        [1] = "DropMoney",
+                                        [2] = "10000"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+                                    wait(15)
+                                end
+                            else
+
+                                getgenv().isDropping = false
+                                if getgenv().isDropping == false then
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false, 102, false, yomama)
+                                    local args = {
+                                        [1] = "stop",
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                end
+
+                            end
+
+                        end
+                        
+                        if finalMsg == getgenv().prefix .. "antiafk" then
+                            humanoid.Health = 0
+                        end
+                        
+                        if finalMsg == getgenv().prefix .. "advert" then
+                            
+
+                            if getgenv().adverting == false then
+
+                                getgenv().adverting = true
+
+                                while getgenv().adverting == true do
+
+                                    local args = {
+                                        [1] = getgenv().adMessage,
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                    wait(getgenv().adMessageCooldown)
+
+                                end
+                            else
+
+                                getgenv().adverting = false
+
+                            end
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "advert " .. plr.Name:lower() then
+
+                            if getgenv().adverting == false then
+
+                                getgenv().adverting = true
+
+                                while getgenv().adverting == true do
+
+                                    local args = {
+                                        [1] = getgenv().adMessage,
+                                        [2] = "All"
+                                    }
+
+                                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                        unpack(args))
+                                    wait(getgenv().adMessageCooldown)
+
+                                end
+                            else
+
+                                getgenv().adverting = false
+
+                            end
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "vibe" then
+
+                            game:GetService("Players"):Chat("/e dance")
+
+                        end
+                        if finalMsg == getgenv().prefix .. "vibe " .. plr.Name:lower() then
+
+                            game:GetService("Players"):Chat("/e dance")
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "wallet " .. plr.Name:lower() then
+                            for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                if v.name == "Wallet" then
+                                    v.Parent = game.Players.LocalPlayer.Character
+                                else
+                                    local localPlayer = game.Players.LocalPlayer
+                                    local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
+                                    if humanoid then
+                                        humanoid:UnequipTools()
+                                    end
+                                end
+                            end
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "wallet" then
+                            for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                if v.name == "Wallet" then
+                                    v.Parent = game.Players.LocalPlayer.Character
+                                else
+                                    local localPlayer = game.Players.LocalPlayer
+                                    local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
+                                    if humanoid then
+                                        humanoid:UnequipTools()
+                                    end
+                                end
+                            end
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "setspot " .. plr.Name:lower() then
+                            local args = {
+                                [1] = "on the spot",
+                                [2] = "All"
+                            }
+
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                unpack(args))
+                            local Players = game:GetService("Players")
+                            local function getPlayerByUserId(userId)
+                                for _, player in pairs(Players:GetPlayers()) do
+                                    if player.UserId == userId then
+                                        return player
+                                    end
+                                end
+                            end
+
+                            local plrrlrllr = getPlayerByUserId(getgenv().controller)
+
+                            getgenv().poss = plrrlrllr.Character.HumanoidRootPart.Position
+
+                        end
+                        if finalMsg == getgenv().prefix .. "setspot" then
+                            local args = {
+                                [1] = "on the spot",
+                                [2] = "All"
+                            }
+
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                unpack(args))
+                            local Players = game:GetService("Players")
+                            local function getPlayerByUserId(userId)
+                                for _, player in pairs(Players:GetPlayers()) do
+                                    if player.UserId == userId then
+                                        return player
+                                    end
+                                end
+                            end
+
+                            local plrrlrllr = getPlayerByUserId(getgenv().controller)
+
+                            getgenv().poss = plrrlrllr.Character.HumanoidRootPart.Position
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "wallet" .. plr.Name:lower() then
+
+                            local args = {
+                                [1] = "I have " ..
+                                    game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.MoneyText.Text,
+                                [2] = "All"
+                            }
+
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                unpack(args))
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "wallet" then
+
+                            local args = {
+                                [1] = "I have " ..
+                                    game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.MoneyText.Text,
+                                [2] = "All"
+                            }
+
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                                unpack(args))
+
+                        end
+                        if finalMsg == getgenv().prefix .. "tospot " .. plr.Name:lower() then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+                                getgenv().poss)
+                            wait(0.5)
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+                        if finalMsg == getgenv().prefix .. "tospot" then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            game:service 'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+                                getgenv().poss)
+                            wait(0.5)
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+                        if finalMsg == getgenv().prefix .. "unfly" then
+                            endFly()
+                        end
+                        if finalMsg == getgenv().prefix .. "unfly" .. plr.Name:lower() then
+                            endFly()
+                        end
+                        if finalMsg == getgenv().prefix .. "airlock" .. plr.Name:lower() then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            local player = game.Players.LocalPlayer
+                            local character = player.Character
+                            local humanoid = character:FindFirstChild("Humanoid")
+                            local LPlr = game.Players.LocalPlayer
+                            local Character = LPlr.Character
+                            local HRP = Character:WaitForChild("HumanoidRootPart")
+                            humanoid.Jump = true
+                            wait(0.3)
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+                        if finalMsg == getgenv().prefix .. "airlock" then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            local player = game.Players.LocalPlayer
+                            local character = player.Character
+                            local humanoid = character:FindFirstChild("Humanoid")
+                            local LPlr = game.Players.LocalPlayer
+                            local Character = LPlr.Character
+                            local HRP = Character:WaitForChild("HumanoidRootPart")
+                            humanoid.Jump = true
+                            wait(0.3)
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+                        if finalMsg == getgenv().prefix .. "kill" then
+                            humanoid.Health = 0
+                        end
+
+                        if finalMsg == getgenv().prefix .. "crash swag" then
+                            loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
+                        end
+
+                        if finalMsg == getgenv().prefix .. "kill " .. plr.Name:lower() then
+                            humanoid.Health = 0
+                        end
+
+                        if finalMsg == getgenv().prefix .. "kick" then
+                            plr:Kick("U got rekt lol.")
+                        end
+                        if finalMsg == getgenv().prefix .. "kick " .. plr.Name:lower() then
+                            plr:Kick("U got rekt lol.")
+                        end
+
+                        if finalMsg == getgenv().prefix .. "bringalts" then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            PlayerHumanoid.RootPart.CFrame = LastTargetPosition + LastTargetPosition.LookVector * Length
+                            PlayerHumanoid.RootPart.CFrame =
+                                CFrame.new(PlayerHumanoid.RootPart.CFrame.Position, Vector3.new(
+                                    LastTargetPosition.Position.X, PlayerHumanoid.RootPart.CFrame.Position.Y,
+                                    LastTargetPosition.Position.Z))
+                        end
+
+                        if finalMsg == getgenv().prefix .. "bring" .. plr.Name:lower() then
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+                            PlayerHumanoid.RootPart.CFrame = LastTargetPosition + LastTargetPosition.LookVector * Length
+                            PlayerHumanoid.RootPart.CFrame =
+                                CFrame.new(PlayerHumanoid.RootPart.CFrame.Position, Vector3.new(
+                                    LastTargetPosition.Position.X, PlayerHumanoid.RootPart.CFrame.Position.Y,
+                                    LastTargetPosition.Position.Z))
+                        end
+
+                        if finalMsg == getgenv().prefix .. "freeze" then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+
+                        if finalMsg == getgenv().prefix .. "freeze " .. plr.Name:lower() then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = true
+
+                        end
+                        if finalMsg == getgenv().prefix .. "unfreeze" then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+
+                        end
+                        if finalMsg == getgenv().prefix .. "unfreeze " .. plr.Name:lower() then
+
+                            game.Players.LocalPlayer.Character.Head.Anchored = false
+
+                        end
+                    end
+                end
+
+            end
+        end
+        Player.Chatted:Connect(Chatted)
+    end
+
+    local GetPlayers = Players:GetPlayers()
+    for i = 1, #GetPlayers do
+        local Player = GetPlayers[i]
+        coroutine.resume(coroutine.create(function()
+            PlayerAdded(Player)
+        end))
+    end
+    Players.PlayerAdded:Connect(PlayerAdded)
+
+    if game.Players.LocalPlayer.UserId == getgenv().controller then
+        function RandomVariable(length)
+            local res = ""
+            for i = 1, length do
+                res = res .. string.char(math.random(97, 122))
+            end
+            return res
+        end
+
+        local LukisControl = Instance.new("ScreenGui")
+        local MainFrame = Instance.new("Frame")
+        local UICorner = Instance.new("UICorner")
+        local Sidebar = Instance.new("Frame")
+        local Sidebar_2 = Instance.new("Frame")
+        local UIGridLayout = Instance.new("UIGridLayout")
+        local CreditsButton = Instance.new("TextButton")
+        local UICorner_2 = Instance.new("UICorner")
+        local UserButton = Instance.new("TextButton")
+        local UICorner_3 = Instance.new("UICorner")
+        local TeleportsButton = Instance.new("TextButton")
+        local UICorner_4 = Instance.new("UICorner")
+        local QueueButton = Instance.new("TextButton")
+        local UICorner_5 = Instance.new("UICorner")
+        local TogglesButton = Instance.new("TextButton")
+        local UICorner_6 = Instance.new("UICorner")
+        local SellingButton = Instance.new("TextButton")
+        local UICorner_7 = Instance.new("UICorner")
+        local Version = Instance.new("TextLabel")
+        local Pages = Instance.new("Frame")
+        local CreditsUi = Instance.new("Frame")
+        local PlayerViewport = Instance.new("ImageLabel")
+        local UICorner_8 = Instance.new("UICorner")
+        local Welcome = Instance.new("TextLabel")
+        local Credits = Instance.new("TextLabel")
+        local Credit1 = Instance.new("TextLabel")
+        local Credit2 = Instance.new("TextLabel")
+        local CurrentVersion = Instance.new("TextLabel")
+        local UserUi = Instance.new("Frame")
+        local Headline = Instance.new("TextLabel")
+        local Line = Instance.new("Frame")
+        local Scripts = Instance.new("Frame")
+        local Fly = Instance.new("TextButton")
+        local UICorner_9 = Instance.new("UICorner")
+        local UIGridLayout_2 = Instance.new("UIGridLayout")
+        local NoClip = Instance.new("TextButton")
+        local UICorner_10 = Instance.new("UICorner")
+        local ForceReset = Instance.new("TextButton")
+        local UICorner_11 = Instance.new("UICorner")
+        local FillButton = Instance.new("TextButton")
+        local UICorner_12 = Instance.new("UICorner")
+        local FillButton_2 = Instance.new("TextButton")
+        local UICorner_13 = Instance.new("UICorner")
+        local FillButton_3 = Instance.new("TextButton")
+        local UICorner_14 = Instance.new("UICorner")
+        local FillButton_4 = Instance.new("TextButton")
+        local UICorner_15 = Instance.new("UICorner")
+        local FillButton_5 = Instance.new("TextButton")
+        local UICorner_16 = Instance.new("UICorner")
+        local FillButton_6 = Instance.new("TextButton")
+        local UICorner_17 = Instance.new("UICorner")
+        local FillButton_7 = Instance.new("TextButton")
+        local UICorner_18 = Instance.new("UICorner")
+        local FillButton_8 = Instance.new("TextButton")
+        local UICorner_19 = Instance.new("UICorner")
+        local FillButton_9 = Instance.new("TextButton")
+        local UICorner_20 = Instance.new("UICorner")
+        local FillButton_10 = Instance.new("TextButton")
+        local UICorner_21 = Instance.new("UICorner")
+        local FillButton_11 = Instance.new("TextButton")
+        local UICorner_22 = Instance.new("UICorner")
+        local FillButton_12 = Instance.new("TextButton")
+        local UICorner_23 = Instance.new("UICorner")
+        local TeleportsUi = Instance.new("Frame")
+        local Places = Instance.new("Frame")
+        local UIGridLayout_3 = Instance.new("UIGridLayout")
+        local Bank = Instance.new("TextButton")
+        local UICorner_24 = Instance.new("UICorner")
+        local Admin = Instance.new("TextButton")
+        local UICorner_25 = Instance.new("UICorner")
+        local SafeZone3 = Instance.new("TextButton")
+        local UICorner_26 = Instance.new("UICorner")
+        local Train = Instance.new("TextButton")
+        local UICorner_27 = Instance.new("UICorner")
+        local School = Instance.new("TextButton")
+        local UICorner_28 = Instance.new("UICorner")
+        local Club = Instance.new("TextButton")
+        local UICorner_29 = Instance.new("UICorner")
+        local Court = Instance.new("TextButton")
+        local UICorner_30 = Instance.new("UICorner")
+        local AboveSchool = Instance.new("TextButton")
+        local UICorner_31 = Instance.new("UICorner")
+        local Jail = Instance.new("TextButton")
+        local UICorner_32 = Instance.new("UICorner")
+        local Placeholder = Instance.new("TextButton")
+        local UICorner_33 = Instance.new("UICorner")
+        local Placeholder_2 = Instance.new("TextButton")
+        local UICorner_34 = Instance.new("UICorner")
+        local Placeholder_3 = Instance.new("TextButton")
+        local UICorner_35 = Instance.new("UICorner")
+        local Placeholder_4 = Instance.new("TextButton")
+        local UICorner_36 = Instance.new("UICorner")
+        local Placeholder_5 = Instance.new("TextButton")
+        local UICorner_37 = Instance.new("UICorner")
+        local Placeholder_6 = Instance.new("TextButton")
+        local UICorner_38 = Instance.new("UICorner")
+        local Headline_2 = Instance.new("TextLabel")
+        local Line_2 = Instance.new("Frame")
+        local QueueUi = Instance.new("Frame")
+        local Line_3 = Instance.new("Frame")
+        local Headline_3 = Instance.new("TextLabel")
+        local Queue = Instance.new("ScrollingFrame")
+        local UIGridLayout_4 = Instance.new("UIGridLayout")
+        local CashOrder = Instance.new("Frame")
+        local UICorner_39 = Instance.new("UICorner")
+        local PlayerViewmodel = Instance.new("ImageLabel")
+        local UICorner_40 = Instance.new("UICorner")
+        local CurrentMoney = Instance.new("TextLabel")
+        local EndingMoney = Instance.new("TextLabel")
+        local TextBox = Instance.new("TextBox")
+        local Ordered = Instance.new("TextLabel")
+        local CashOrder_2 = Instance.new("Frame")
+        local UICorner_41 = Instance.new("UICorner")
+        local PlayerViewmodel_2 = Instance.new("ImageLabel")
+        local UICorner_42 = Instance.new("UICorner")
+        local CurrentMoney_2 = Instance.new("TextLabel")
+        local EndingMoney_2 = Instance.new("TextLabel")
+        local TextBox_2 = Instance.new("TextBox")
+        local Ordered_2 = Instance.new("TextLabel")
+        local CashOrder_3 = Instance.new("Frame")
+        local UICorner_43 = Instance.new("UICorner")
+        local PlayerViewmodel_3 = Instance.new("ImageLabel")
+        local UICorner_44 = Instance.new("UICorner")
+        local CurrentMoney_3 = Instance.new("TextLabel")
+        local EndingMoney_3 = Instance.new("TextLabel")
+        local TextBox_3 = Instance.new("TextBox")
+        local Ordered_3 = Instance.new("TextLabel")
+        local TogglesUi = Instance.new("Frame")
+        local SellingUi = Instance.new("Frame")
+
+        LukisControl.Parent = game.CoreGui
+
+        LukisControl.Name = "LukisControl"
+        LukisControl.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
+        MainFrame.Name = "MainFrame"
+        MainFrame.Parent = LukisControl
+        MainFrame.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        MainFrame.BorderSizePixel = 0
+        MainFrame.Position = UDim2.new(0.28141135, 0, 0.266875982, 0)
+        MainFrame.Size = UDim2.new(0, 507, 0, 311)
+        MainFrame.Draggable = true
+        MainFrame.Active = true
+
+        UICorner.Parent = MainFrame
+
+        Sidebar.Name = "Sidebar"
+        Sidebar.Parent = MainFrame
+        Sidebar.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Sidebar.BorderSizePixel = 0
+        Sidebar.Size = UDim2.new(0, 96, 0, 311)
+
+        Sidebar_2.Name = "Sidebar"
+        Sidebar_2.Parent = Sidebar
+        Sidebar_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Sidebar_2.BorderSizePixel = 0
+        Sidebar_2.Position = UDim2.new(0.0625, 0, 0.125401929, 0)
+        Sidebar_2.Size = UDim2.new(0, 83, 0, 272)
+
+        UIGridLayout.Parent = Sidebar_2
+        UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout.CellSize = UDim2.new(0, 85, 0, 40)
+
+        CreditsButton.Name = "CreditsButton"
+        CreditsButton.Parent = Sidebar_2
+        CreditsButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        CreditsButton.BorderSizePixel = 0
+        CreditsButton.Size = UDim2.new(0, 90, 0, 30)
+        CreditsButton.Font = Enum.Font.GothamBlack
+        CreditsButton.Text = "Credits"
+        CreditsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        CreditsButton.TextSize = 20.000
+
+        UICorner_2.Parent = CreditsButton
+
+        UserButton.Name = "UserButton"
+        UserButton.Parent = Sidebar_2
+        UserButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        UserButton.BorderSizePixel = 0
+        UserButton.Size = UDim2.new(0, 90, 0, 30)
+        UserButton.Font = Enum.Font.GothamBlack
+        UserButton.Text = "User"
+        UserButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        UserButton.TextSize = 20.000
+
+        UICorner_3.Parent = UserButton
+
+        TeleportsButton.Name = "TeleportsButton"
+        TeleportsButton.Parent = Sidebar_2
+        TeleportsButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        TeleportsButton.BorderSizePixel = 0
+        TeleportsButton.Size = UDim2.new(0, 90, 0, 30)
+        TeleportsButton.Font = Enum.Font.GothamBlack
+        TeleportsButton.Text = "Teleports"
+        TeleportsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TeleportsButton.TextSize = 17.000
+
+        UICorner_4.Parent = TeleportsButton
+
+        QueueButton.Name = "QueueButton"
+        QueueButton.Parent = Sidebar_2
+        QueueButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        QueueButton.BorderSizePixel = 0
+        QueueButton.Size = UDim2.new(0, 90, 0, 30)
+        QueueButton.Font = Enum.Font.GothamBlack
+        QueueButton.Text = "Queue"
+        QueueButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        QueueButton.TextSize = 20.000
+
+        UICorner_5.Parent = QueueButton
+
+        TogglesButton.Name = "TogglesButton"
+        TogglesButton.Parent = Sidebar_2
+        TogglesButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        TogglesButton.BorderSizePixel = 0
+        TogglesButton.Size = UDim2.new(0, 90, 0, 30)
+        TogglesButton.Font = Enum.Font.GothamBlack
+        TogglesButton.Text = "Toggle"
+        TogglesButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TogglesButton.TextSize = 20.000
+
+        UICorner_6.Parent = TogglesButton
+
+        SellingButton.Name = "SellingButton"
+        SellingButton.Parent = Sidebar_2
+        SellingButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        SellingButton.BorderSizePixel = 0
+        SellingButton.Size = UDim2.new(0, 90, 0, 30)
+        SellingButton.Font = Enum.Font.GothamBlack
+        SellingButton.Text = "Selling"
+        SellingButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        SellingButton.TextSize = 20.000
+
+        UICorner_7.Parent = SellingButton
+
+        Version.Name = "Version"
+        Version.Parent = Sidebar
+        Version.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Version.BackgroundTransparency = 1.000
+        Version.BorderSizePixel = 0
+        Version.Position = UDim2.new(0.0625, 0, 0.0192926042, 0)
+        Version.Size = UDim2.new(0, 83, 0, 25)
+        Version.Font = Enum.Font.GothamBold
+        Version.Text = "Version 0.0.1"
+        Version.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Version.TextSize = 14.000
+
+        Pages.Name = "Pages"
+        Pages.Parent = MainFrame
+        Pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Pages.BackgroundTransparency = 1.000
+        Pages.Position = UDim2.new(0.21104537, 0, 0.0482315123, 0)
+        Pages.Size = UDim2.new(0, 400, 0, 296)
+
+        CreditsUi.Name = "CreditsUi"
+        CreditsUi.Parent = Pages
+        CreditsUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        CreditsUi.BackgroundTransparency = 1.000
+        CreditsUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        CreditsUi.Size = UDim2.new(0, 400, 0, 296)
+
+        PlayerViewport.Name = "PlayerViewport"
+        PlayerViewport.Parent = CreditsUi
+        PlayerViewport.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        PlayerViewport.Position = UDim2.new(0.0149999997, 0, 0.0540540554, 0)
+        PlayerViewport.Size = UDim2.new(0, 109, 0, 109)
+        PlayerViewport.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+        UICorner_8.CornerRadius = UDim.new(0, 100)
+        UICorner_8.Parent = PlayerViewport
+
+        Welcome.Name = "Welcome"
+        Welcome.Parent = CreditsUi
+        Welcome.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Welcome.BackgroundTransparency = 1.000
+        Welcome.BorderSizePixel = 0
+        Welcome.Position = UDim2.new(0.319999993, 0, 0.152027026, 0)
+        Welcome.Size = UDim2.new(0, 253, 0, 50)
+        Welcome.Font = Enum.Font.GothamBold
+        Welcome.Text = "HOLDER"
+        Welcome.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Welcome.TextScaled = true
+        Welcome.TextSize = 14.000
+        Welcome.TextWrapped = true
+
+        Credits.Name = "Credits"
+        Credits.Parent = CreditsUi
+        Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Credits.BackgroundTransparency = 1.000
+        Credits.BorderSizePixel = 0
+        Credits.Position = UDim2.new(0.0149999997, 0, 0.456081092, 0)
+        Credits.Size = UDim2.new(0, 200, 0, 50)
+        Credits.Font = Enum.Font.GothamBlack
+        Credits.Text = "Credits:"
+        Credits.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Credits.TextSize = 40.000
+        Credits.TextWrapped = true
+        Credits.TextXAlignment = Enum.TextXAlignment.Left
+
+        Credit1.Name = "Credit1"
+        Credit1.Parent = CreditsUi
+        Credit1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Credit1.BackgroundTransparency = 1.000
+        Credit1.BorderSizePixel = 0
+        Credit1.Position = UDim2.new(0.0149999997, 0, 0.624065697, 0)
+        Credit1.Size = UDim2.new(0, 190, 0, 25)
+        Credit1.Font = Enum.Font.GothamBlack
+        Credit1.Text = "- luki#0069 (Coder)"
+        Credit1.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Credit1.TextSize = 20.000
+        Credit1.TextWrapped = true
+        Credit1.TextXAlignment = Enum.TextXAlignment.Left
+
+        Credit2.Name = "Credit2"
+        Credit2.Parent = CreditsUi
+        Credit2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Credit2.BackgroundTransparency = 1.000
+        Credit2.BorderSizePixel = 0
+        Credit2.Position = UDim2.new(0.0149999997, 0, 0.715281904, 0)
+        Credit2.Size = UDim2.new(0, 211, 0, 25)
+        Credit2.Font = Enum.Font.GothamBlack
+        Credit2.Text = "- tomW#0001 (Manager)"
+        Credit2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Credit2.TextSize = 17.000
+        Credit2.TextWrapped = true
+        Credit2.TextXAlignment = Enum.TextXAlignment.Left
+
+        CurrentVersion.Name = "CurrentVersion"
+        CurrentVersion.Parent = CreditsUi
+        CurrentVersion.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        CurrentVersion.BackgroundTransparency = 1.000
+        CurrentVersion.BorderSizePixel = 0
+        CurrentVersion.Position = UDim2.new(0.477499992, 0, 0.843660295, 0)
+        CurrentVersion.Size = UDim2.new(0, 190, 0, 25)
+        CurrentVersion.Font = Enum.Font.GothamBlack
+        CurrentVersion.Text = "Current Version: 0.0.1"
+        CurrentVersion.TextColor3 = Color3.fromRGB(0, 0, 0)
+        CurrentVersion.TextScaled = true
+        CurrentVersion.TextSize = 20.000
+        CurrentVersion.TextWrapped = true
+        CurrentVersion.TextXAlignment = Enum.TextXAlignment.Left
+
+        UserUi.Name = "UserUi"
+        UserUi.Parent = Pages
+        UserUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        UserUi.BackgroundTransparency = 1.000
+        UserUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        UserUi.Size = UDim2.new(0, 400, 0, 296)
+        UserUi.Visible = false
+
+        Headline.Name = "Headline"
+        Headline.Parent = UserUi
+        Headline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Headline.BackgroundTransparency = 1.000
+        Headline.BorderSizePixel = 0
+        Headline.Position = UDim2.new(0, 0, -0.0279613193, 0)
+        Headline.Size = UDim2.new(0, 400, 0, 32)
+        Headline.Font = Enum.Font.GothamBlack
+        Headline.Text = "USER SCRIPTS"
+        Headline.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Headline.TextScaled = true
+        Headline.TextSize = 14.000
+        Headline.TextWrapped = true
+
+        Line.Name = "Line"
+        Line.Parent = UserUi
+        Line.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Line.Position = UDim2.new(-0.0274999999, 0, 0.0835251659, 0)
+        Line.Size = UDim2.new(0, 411, 0, 3)
+
+        Scripts.Name = "Scripts"
+        Scripts.Parent = UserUi
+        Scripts.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Scripts.BackgroundTransparency = 1.000
+        Scripts.Position = UDim2.new(0, 0, 0.121621624, 0)
+        Scripts.Size = UDim2.new(0, 393, 0, 245)
+
+        Fly.Name = "Fly"
+        Fly.Parent = Scripts
+        Fly.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Fly.Size = UDim2.new(0, 200, 0, 50)
+        Fly.Font = Enum.Font.GothamBold
+        Fly.Text = "Fly [X]"
+        Fly.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Fly.TextSize = 20.000
+
+        UICorner_9.Parent = Fly
+
+        UIGridLayout_2.Parent = Scripts
+        UIGridLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout_2.CellSize = UDim2.new(0, 125, 0, 45)
+
+        NoClip.Name = "NoClip"
+        NoClip.Parent = Scripts
+        NoClip.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        NoClip.Size = UDim2.new(0, 200, 0, 50)
+        NoClip.Font = Enum.Font.GothamBold
+        NoClip.Text = "NoClip [C]"
+        NoClip.TextColor3 = Color3.fromRGB(0, 0, 0)
+        NoClip.TextSize = 20.000
+
+        UICorner_10.Parent = NoClip
+
+        ForceReset.Name = "ForceReset"
+        ForceReset.Parent = Scripts
+        ForceReset.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        ForceReset.Size = UDim2.new(0, 200, 0, 50)
+        ForceReset.Font = Enum.Font.GothamBold
+        ForceReset.Text = "Force Reset"
+        ForceReset.TextColor3 = Color3.fromRGB(0, 0, 0)
+        ForceReset.TextSize = 20.000
+
+        UICorner_11.Parent = ForceReset
+
+        FillButton.Name = "FillButton"
+        FillButton.Parent = Scripts
+        FillButton.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton.Size = UDim2.new(0, 200, 0, 50)
+        FillButton.Font = Enum.Font.GothamBold
+        FillButton.Text = "Fill Button"
+        FillButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton.TextSize = 20.000
+
+        UICorner_12.Parent = FillButton
+
+        FillButton_2.Name = "FillButton"
+        FillButton_2.Parent = Scripts
+        FillButton_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_2.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_2.Font = Enum.Font.GothamBold
+        FillButton_2.Text = "Fill Button"
+        FillButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_2.TextSize = 20.000
+
+        UICorner_13.Parent = FillButton_2
+
+        FillButton_3.Name = "FillButton"
+        FillButton_3.Parent = Scripts
+        FillButton_3.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_3.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_3.Font = Enum.Font.GothamBold
+        FillButton_3.Text = "Fill Button"
+        FillButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_3.TextSize = 20.000
+
+        UICorner_14.Parent = FillButton_3
+
+        FillButton_4.Name = "FillButton"
+        FillButton_4.Parent = Scripts
+        FillButton_4.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_4.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_4.Font = Enum.Font.GothamBold
+        FillButton_4.Text = "Fill Button"
+        FillButton_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_4.TextSize = 20.000
+
+        UICorner_15.Parent = FillButton_4
+
+        FillButton_5.Name = "FillButton"
+        FillButton_5.Parent = Scripts
+        FillButton_5.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_5.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_5.Font = Enum.Font.GothamBold
+        FillButton_5.Text = "Fill Button"
+        FillButton_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_5.TextSize = 20.000
+
+        UICorner_16.Parent = FillButton_5
+
+        FillButton_6.Name = "FillButton"
+        FillButton_6.Parent = Scripts
+        FillButton_6.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_6.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_6.Font = Enum.Font.GothamBold
+        FillButton_6.Text = "Fill Button"
+        FillButton_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_6.TextSize = 20.000
+
+        UICorner_17.Parent = FillButton_6
+
+        FillButton_7.Name = "FillButton"
+        FillButton_7.Parent = Scripts
+        FillButton_7.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_7.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_7.Font = Enum.Font.GothamBold
+        FillButton_7.Text = "Fill Button"
+        FillButton_7.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_7.TextSize = 20.000
+
+        UICorner_18.Parent = FillButton_7
+
+        FillButton_8.Name = "FillButton"
+        FillButton_8.Parent = Scripts
+        FillButton_8.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_8.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_8.Font = Enum.Font.GothamBold
+        FillButton_8.Text = "Fill Button"
+        FillButton_8.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_8.TextSize = 20.000
+
+        UICorner_19.Parent = FillButton_8
+
+        FillButton_9.Name = "FillButton"
+        FillButton_9.Parent = Scripts
+        FillButton_9.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_9.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_9.Font = Enum.Font.GothamBold
+        FillButton_9.Text = "Fill Button"
+        FillButton_9.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_9.TextSize = 20.000
+
+        UICorner_20.Parent = FillButton_9
+
+        FillButton_10.Name = "FillButton"
+        FillButton_10.Parent = Scripts
+        FillButton_10.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_10.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_10.Font = Enum.Font.GothamBold
+        FillButton_10.Text = "Fill Button"
+        FillButton_10.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_10.TextSize = 20.000
+
+        UICorner_21.Parent = FillButton_10
+
+        FillButton_11.Name = "FillButton"
+        FillButton_11.Parent = Scripts
+        FillButton_11.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_11.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_11.Font = Enum.Font.GothamBold
+        FillButton_11.Text = "Fill Button"
+        FillButton_11.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_11.TextSize = 20.000
+
+        UICorner_22.Parent = FillButton_11
+
+        FillButton_12.Name = "FillButton"
+        FillButton_12.Parent = Scripts
+        FillButton_12.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        FillButton_12.Size = UDim2.new(0, 200, 0, 50)
+        FillButton_12.Font = Enum.Font.GothamBold
+        FillButton_12.Text = "Fill Button"
+        FillButton_12.TextColor3 = Color3.fromRGB(0, 0, 0)
+        FillButton_12.TextSize = 20.000
+
+        UICorner_23.Parent = FillButton_12
+
+        TeleportsUi.Name = "TeleportsUi"
+        TeleportsUi.Parent = Pages
+        TeleportsUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TeleportsUi.BackgroundTransparency = 1.000
+        TeleportsUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        TeleportsUi.Size = UDim2.new(0, 400, 0, 296)
+        TeleportsUi.Visible = false
+
+        Places.Name = "Places"
+        Places.Parent = TeleportsUi
+        Places.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Places.BackgroundTransparency = 1.000
+        Places.Position = UDim2.new(0, 0, 0.121621624, 0)
+        Places.Size = UDim2.new(0, 393, 0, 245)
+
+        UIGridLayout_3.Parent = Places
+        UIGridLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout_3.CellSize = UDim2.new(0, 125, 0, 45)
+
+        Bank.Name = "Bank"
+        Bank.Parent = Places
+        Bank.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Bank.Size = UDim2.new(0, 200, 0, 50)
+        Bank.Font = Enum.Font.GothamBold
+        Bank.Text = "Bank"
+        Bank.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Bank.TextSize = 20.000
+
+        UICorner_24.Parent = Bank
+
+        Admin.Name = "Admin"
+        Admin.Parent = Places
+        Admin.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Admin.Size = UDim2.new(0, 200, 0, 50)
+        Admin.Font = Enum.Font.GothamBold
+        Admin.Text = "Admin"
+        Admin.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Admin.TextSize = 20.000
+
+        UICorner_25.Parent = Admin
+
+        SafeZone3.Name = "SafeZone3"
+        SafeZone3.Parent = Places
+        SafeZone3.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        SafeZone3.Size = UDim2.new(0, 200, 0, 50)
+        SafeZone3.Font = Enum.Font.GothamBold
+        SafeZone3.Text = "SZ3"
+        SafeZone3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        SafeZone3.TextSize = 20.000
+
+        UICorner_26.Parent = SafeZone3
+
+        Train.Name = "Train"
+        Train.Parent = Places
+        Train.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Train.Size = UDim2.new(0, 200, 0, 50)
+        Train.Font = Enum.Font.GothamBold
+        Train.Text = "Train"
+        Train.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Train.TextSize = 20.000
+
+        UICorner_27.Parent = Train
+
+        School.Name = "School"
+        School.Parent = Places
+        School.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        School.Size = UDim2.new(0, 200, 0, 50)
+        School.Font = Enum.Font.GothamBold
+        School.Text = "School"
+        School.TextColor3 = Color3.fromRGB(0, 0, 0)
+        School.TextSize = 20.000
+
+        UICorner_28.Parent = School
+
+        Club.Name = "Club"
+        Club.Parent = Places
+        Club.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Club.Size = UDim2.new(0, 200, 0, 50)
+        Club.Font = Enum.Font.GothamBold
+        Club.Text = "Club"
+        Club.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Club.TextSize = 20.000
+
+        UICorner_29.Parent = Club
+
+        Court.Name = "Court"
+        Court.Parent = Places
+        Court.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Court.Size = UDim2.new(0, 200, 0, 50)
+        Court.Font = Enum.Font.GothamBold
+        Court.Text = "Court"
+        Court.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Court.TextSize = 20.000
+
+        UICorner_30.Parent = Court
+
+        AboveSchool.Name = "AboveSchool"
+        AboveSchool.Parent = Places
+        AboveSchool.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        AboveSchool.Size = UDim2.new(0, 200, 0, 50)
+        AboveSchool.Font = Enum.Font.GothamBold
+        AboveSchool.Text = "Above School"
+        AboveSchool.TextColor3 = Color3.fromRGB(0, 0, 0)
+        AboveSchool.TextSize = 18.000
+
+        UICorner_31.Parent = AboveSchool
+
+        Jail.Name = "Jail"
+        Jail.Parent = Places
+        Jail.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Jail.Size = UDim2.new(0, 200, 0, 50)
+        Jail.Font = Enum.Font.GothamBold
+        Jail.Text = "Jail"
+        Jail.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Jail.TextSize = 20.000
+
+        UICorner_32.Parent = Jail
+
+        Placeholder.Name = "Placeholder"
+        Placeholder.Parent = Places
+        Placeholder.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder.Font = Enum.Font.GothamBold
+        Placeholder.Text = "Placeholder"
+        Placeholder.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder.TextSize = 20.000
+
+        UICorner_33.Parent = Placeholder
+
+        Placeholder_2.Name = "Placeholder"
+        Placeholder_2.Parent = Places
+        Placeholder_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder_2.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder_2.Font = Enum.Font.GothamBold
+        Placeholder_2.Text = "Placeholder"
+        Placeholder_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder_2.TextSize = 20.000
+
+        UICorner_34.Parent = Placeholder_2
+
+        Placeholder_3.Name = "Placeholder"
+        Placeholder_3.Parent = Places
+        Placeholder_3.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder_3.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder_3.Font = Enum.Font.GothamBold
+        Placeholder_3.Text = "Placeholder"
+        Placeholder_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder_3.TextSize = 20.000
+
+        UICorner_35.Parent = Placeholder_3
+
+        Placeholder_4.Name = "Placeholder"
+        Placeholder_4.Parent = Places
+        Placeholder_4.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder_4.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder_4.Font = Enum.Font.GothamBold
+        Placeholder_4.Text = "Placeholder"
+        Placeholder_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder_4.TextSize = 20.000
+
+        UICorner_36.Parent = Placeholder_4
+
+        Placeholder_5.Name = "Placeholder"
+        Placeholder_5.Parent = Places
+        Placeholder_5.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder_5.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder_5.Font = Enum.Font.GothamBold
+        Placeholder_5.Text = "Placeholder"
+        Placeholder_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder_5.TextSize = 20.000
+
+        UICorner_37.Parent = Placeholder_5
+
+        Placeholder_6.Name = "Placeholder"
+        Placeholder_6.Parent = Places
+        Placeholder_6.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        Placeholder_6.Size = UDim2.new(0, 200, 0, 50)
+        Placeholder_6.Font = Enum.Font.GothamBold
+        Placeholder_6.Text = "Placeholder"
+        Placeholder_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Placeholder_6.TextSize = 20.000
+
+        UICorner_38.Parent = Placeholder_6
+
+        Headline_2.Name = "Headline"
+        Headline_2.Parent = TeleportsUi
+        Headline_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Headline_2.BackgroundTransparency = 1.000
+        Headline_2.BorderSizePixel = 0
+        Headline_2.Position = UDim2.new(0, 0, -0.0279613193, 0)
+        Headline_2.Size = UDim2.new(0, 400, 0, 32)
+        Headline_2.Font = Enum.Font.GothamBlack
+        Headline_2.Text = "TELEPORT LOCATIONS"
+        Headline_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Headline_2.TextScaled = true
+        Headline_2.TextSize = 14.000
+        Headline_2.TextWrapped = true
+
+        Line_2.Name = "Line"
+        Line_2.Parent = TeleportsUi
+        Line_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Line_2.Position = UDim2.new(-0.0274999999, 0, 0.0835251659, 0)
+        Line_2.Size = UDim2.new(0, 411, 0, 3)
+
+        QueueUi.Name = "QueueUi"
+        QueueUi.Parent = Pages
+        QueueUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        QueueUi.BackgroundTransparency = 1.000
+        QueueUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        QueueUi.Size = UDim2.new(0, 400, 0, 296)
+        QueueUi.Visible = false
+
+        Line_3.Name = "Line"
+        Line_3.Parent = QueueUi
+        Line_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Line_3.Position = UDim2.new(-0.0274999999, 0, 0.0835251659, 0)
+        Line_3.Size = UDim2.new(0, 411, 0, 3)
+
+        Headline_3.Name = "Headline"
+        Headline_3.Parent = QueueUi
+        Headline_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Headline_3.BackgroundTransparency = 1.000
+        Headline_3.BorderSizePixel = 0
+        Headline_3.Position = UDim2.new(0, 0, -0.0279613193, 0)
+        Headline_3.Size = UDim2.new(0, 400, 0, 32)
+        Headline_3.Font = Enum.Font.GothamBlack
+        Headline_3.Text = "Cash Queue"
+        Headline_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Headline_3.TextScaled = true
+        Headline_3.TextSize = 14.000
+        Headline_3.TextWrapped = true
+
+        Queue.Name = "Queue"
+        Queue.Parent = QueueUi
+        Queue.Active = true
+        Queue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Queue.BackgroundTransparency = 1.000
+        Queue.BorderSizePixel = 0
+        Queue.Position = UDim2.new(0, 0, 0.122000001, 0)
+        Queue.Size = UDim2.new(0, 393, 0, 245)
+
+        UIGridLayout_4.Parent = Queue
+        UIGridLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout_4.CellSize = UDim2.new(0, 390, 0, 75)
+
+        CashOrder.Name = "CashOrder"
+        CashOrder.Parent = Queue
+        CashOrder.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        CashOrder.BorderColor3 = Color3.fromRGB(27, 42, 53)
+        CashOrder.Size = UDim2.new(0, 100, 0, 100)
+
+        UICorner_39.Parent = CashOrder
+
+        PlayerViewmodel.Name = "PlayerViewmodel"
+        PlayerViewmodel.Parent = CashOrder
+        PlayerViewmodel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        PlayerViewmodel.Position = UDim2.new(0.0179487187, 0, 0.0933333337, 0)
+        PlayerViewmodel.Size = UDim2.new(0, 60, 0, 60)
+        PlayerViewmodel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+        UICorner_40.CornerRadius = UDim.new(0, 100)
+        UICorner_40.Parent = PlayerViewmodel
+
+        CurrentMoney.Name = "CurrentMoney"
+        CurrentMoney.Parent = CashOrder
+        CurrentMoney.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        CurrentMoney.BackgroundTransparency = 1.000
+        CurrentMoney.BorderSizePixel = 0
+        CurrentMoney.Position = UDim2.new(0.479487181, 0, 0.0933333337, 0)
+        CurrentMoney.Size = UDim2.new(0, 194, 0, 26)
+        CurrentMoney.Font = Enum.Font.GothamBlack
+        CurrentMoney.Text = "Starting Money: HOLDER"
+        CurrentMoney.TextColor3 = Color3.fromRGB(0, 0, 0)
+        CurrentMoney.TextScaled = true
+        CurrentMoney.TextSize = 16.000
+        CurrentMoney.TextWrapped = true
+
+        EndingMoney.Name = "EndingMoney"
+        EndingMoney.Parent = CashOrder
+        EndingMoney.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        EndingMoney.BackgroundTransparency = 1.000
+        EndingMoney.BorderSizePixel = 0
+        EndingMoney.Position = UDim2.new(0.479487181, 0, 0.546666682, 0)
+        EndingMoney.Size = UDim2.new(0, 194, 0, 26)
+        EndingMoney.Font = Enum.Font.GothamBlack
+        EndingMoney.Text = "Ending Money: HOLDER"
+        EndingMoney.TextColor3 = Color3.fromRGB(0, 0, 0)
+        EndingMoney.TextScaled = true
+        EndingMoney.TextSize = 16.000
+        EndingMoney.TextWrapped = true
+
+        TextBox.Parent = CashOrder
+        TextBox.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        TextBox.Position = UDim2.new(0.192307696, 0, 0.546666682, 0)
+        TextBox.Size = UDim2.new(0, 106, 0, 20)
+        TextBox.Font = Enum.Font.GothamBlack
+        TextBox.Text = ""
+        TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextBox.TextSize = 14.000
+
+        Ordered.Name = "Ordered"
+        Ordered.Parent = CashOrder
+        Ordered.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Ordered.BackgroundTransparency = 1.000
+        Ordered.BorderSizePixel = 0
+        Ordered.Position = UDim2.new(0.192307696, 0, 0.200000003, 0)
+        Ordered.Size = UDim2.new(0, 106, 0, 26)
+        Ordered.Font = Enum.Font.GothamBlack
+        Ordered.Text = "Ordered:"
+        Ordered.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Ordered.TextScaled = true
+        Ordered.TextSize = 16.000
+        Ordered.TextWrapped = true
+
+        CashOrder_2.Name = "CashOrder"
+        CashOrder_2.Parent = Queue
+        CashOrder_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        CashOrder_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
+        CashOrder_2.Size = UDim2.new(0, 100, 0, 100)
+
+        UICorner_41.Parent = CashOrder_2
+
+        PlayerViewmodel_2.Name = "PlayerViewmodel"
+        PlayerViewmodel_2.Parent = CashOrder_2
+        PlayerViewmodel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        PlayerViewmodel_2.Position = UDim2.new(0.0179487187, 0, 0.0933333337, 0)
+        PlayerViewmodel_2.Size = UDim2.new(0, 60, 0, 60)
+        PlayerViewmodel_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+        UICorner_42.CornerRadius = UDim.new(0, 100)
+        UICorner_42.Parent = PlayerViewmodel_2
+
+        CurrentMoney_2.Name = "CurrentMoney"
+        CurrentMoney_2.Parent = CashOrder_2
+        CurrentMoney_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        CurrentMoney_2.BackgroundTransparency = 1.000
+        CurrentMoney_2.BorderSizePixel = 0
+        CurrentMoney_2.Position = UDim2.new(0.479487181, 0, 0.0933333337, 0)
+        CurrentMoney_2.Size = UDim2.new(0, 194, 0, 26)
+        CurrentMoney_2.Font = Enum.Font.GothamBlack
+        CurrentMoney_2.Text = "Starting Money: HOLDER"
+        CurrentMoney_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        CurrentMoney_2.TextScaled = true
+        CurrentMoney_2.TextSize = 16.000
+        CurrentMoney_2.TextWrapped = true
+
+        EndingMoney_2.Name = "EndingMoney"
+        EndingMoney_2.Parent = CashOrder_2
+        EndingMoney_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        EndingMoney_2.BackgroundTransparency = 1.000
+        EndingMoney_2.BorderSizePixel = 0
+        EndingMoney_2.Position = UDim2.new(0.479487181, 0, 0.546666682, 0)
+        EndingMoney_2.Size = UDim2.new(0, 194, 0, 26)
+        EndingMoney_2.Font = Enum.Font.GothamBlack
+        EndingMoney_2.Text = "Ending Money: HOLDER"
+        EndingMoney_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        EndingMoney_2.TextScaled = true
+        EndingMoney_2.TextSize = 16.000
+        EndingMoney_2.TextWrapped = true
+
+        TextBox_2.Parent = CashOrder_2
+        TextBox_2.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        TextBox_2.Position = UDim2.new(0.192307696, 0, 0.546666682, 0)
+        TextBox_2.Size = UDim2.new(0, 106, 0, 20)
+        TextBox_2.Font = Enum.Font.GothamBlack
+        TextBox_2.Text = ""
+        TextBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextBox_2.TextSize = 14.000
+
+        Ordered_2.Name = "Ordered"
+        Ordered_2.Parent = CashOrder_2
+        Ordered_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Ordered_2.BackgroundTransparency = 1.000
+        Ordered_2.BorderSizePixel = 0
+        Ordered_2.Position = UDim2.new(0.192307696, 0, 0.200000003, 0)
+        Ordered_2.Size = UDim2.new(0, 106, 0, 26)
+        Ordered_2.Font = Enum.Font.GothamBlack
+        Ordered_2.Text = "Ordered:"
+        Ordered_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Ordered_2.TextScaled = true
+        Ordered_2.TextSize = 16.000
+        Ordered_2.TextWrapped = true
+
+        CashOrder_3.Name = "CashOrder"
+        CashOrder_3.Parent = Queue
+        CashOrder_3.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        CashOrder_3.BorderColor3 = Color3.fromRGB(27, 42, 53)
+        CashOrder_3.Size = UDim2.new(0, 100, 0, 100)
+
+        UICorner_43.Parent = CashOrder_3
+
+        PlayerViewmodel_3.Name = "PlayerViewmodel"
+        PlayerViewmodel_3.Parent = CashOrder_3
+        PlayerViewmodel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        PlayerViewmodel_3.Position = UDim2.new(0.0179487187, 0, 0.0933333337, 0)
+        PlayerViewmodel_3.Size = UDim2.new(0, 60, 0, 60)
+        PlayerViewmodel_3.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+        UICorner_44.CornerRadius = UDim.new(0, 100)
+        UICorner_44.Parent = PlayerViewmodel_3
+
+        CurrentMoney_3.Name = "CurrentMoney"
+        CurrentMoney_3.Parent = CashOrder_3
+        CurrentMoney_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        CurrentMoney_3.BackgroundTransparency = 1.000
+        CurrentMoney_3.BorderSizePixel = 0
+        CurrentMoney_3.Position = UDim2.new(0.479487181, 0, 0.0933333337, 0)
+        CurrentMoney_3.Size = UDim2.new(0, 194, 0, 26)
+        CurrentMoney_3.Font = Enum.Font.GothamBlack
+        CurrentMoney_3.Text = "Starting Money: HOLDER"
+        CurrentMoney_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        CurrentMoney_3.TextScaled = true
+        CurrentMoney_3.TextSize = 16.000
+        CurrentMoney_3.TextWrapped = true
+
+        EndingMoney_3.Name = "EndingMoney"
+        EndingMoney_3.Parent = CashOrder_3
+        EndingMoney_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        EndingMoney_3.BackgroundTransparency = 1.000
+        EndingMoney_3.BorderSizePixel = 0
+        EndingMoney_3.Position = UDim2.new(0.479487181, 0, 0.546666682, 0)
+        EndingMoney_3.Size = UDim2.new(0, 194, 0, 26)
+        EndingMoney_3.Font = Enum.Font.GothamBlack
+        EndingMoney_3.Text = "Ending Money: HOLDER"
+        EndingMoney_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        EndingMoney_3.TextScaled = true
+        EndingMoney_3.TextSize = 16.000
+        EndingMoney_3.TextWrapped = true
+
+        TextBox_3.Parent = CashOrder_3
+        TextBox_3.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        TextBox_3.Position = UDim2.new(0.192307696, 0, 0.546666682, 0)
+        TextBox_3.Size = UDim2.new(0, 106, 0, 20)
+        TextBox_3.Font = Enum.Font.GothamBlack
+        TextBox_3.Text = ""
+        TextBox_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextBox_3.TextSize = 14.000
+
+        Ordered_3.Name = "Ordered"
+        Ordered_3.Parent = CashOrder_3
+        Ordered_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Ordered_3.BackgroundTransparency = 1.000
+        Ordered_3.BorderSizePixel = 0
+        Ordered_3.Position = UDim2.new(0.192307696, 0, 0.200000003, 0)
+        Ordered_3.Size = UDim2.new(0, 106, 0, 26)
+        Ordered_3.Font = Enum.Font.GothamBlack
+        Ordered_3.Text = "Ordered:"
+        Ordered_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Ordered_3.TextScaled = true
+        Ordered_3.TextSize = 16.000
+        Ordered_3.TextWrapped = true
+
+        TogglesUi.Name = "TogglesUi"
+        TogglesUi.Parent = Pages
+        TogglesUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TogglesUi.BackgroundTransparency = 1.000
+        TogglesUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        TogglesUi.Size = UDim2.new(0, 400, 0, 296)
+
+        SellingUi.Name = "SellingUi"
+        SellingUi.Parent = Pages
+        SellingUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        SellingUi.BackgroundTransparency = 1.000
+        SellingUi.Position = UDim2.new(-0.00145463645, 0, -0.00244416296, 0)
+        SellingUi.Size = UDim2.new(0, 400, 0, 296)
+        SellingUi.Visible = false
+
+        -- Scripts:
+
+        local function YPYGY_fake_script() -- CreditsButton.LocalScript 
+            local script = Instance.new('LocalScript', CreditsButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = true
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = false
+            end)
+        end
+        coroutine.wrap(YPYGY_fake_script)()
+        local function HGHWTK_fake_script() -- UserButton.LocalScript 
+            local script = Instance.new('LocalScript', UserButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = true
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = false
+            end)
+        end
+        coroutine.wrap(HGHWTK_fake_script)()
+        local function XZONOV_fake_script() -- TeleportsButton.LocalScript 
+            local script = Instance.new('LocalScript', TeleportsButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = true
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = false
+            end)
+        end
+        coroutine.wrap(XZONOV_fake_script)()
+        local function ISDYYWN_fake_script() -- QueueButton.LocalScript 
+            local script = Instance.new('LocalScript', QueueButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = true
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = false
+            end)
+        end
+        coroutine.wrap(ISDYYWN_fake_script)()
+        local function TAJZCTX_fake_script() -- TogglesButton.LocalScript 
+            local script = Instance.new('LocalScript', TogglesButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = true
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = false
+            end)
+        end
+        coroutine.wrap(TAJZCTX_fake_script)()
+        local function BGKKGFT_fake_script() -- SellingButton.LocalScript 
+            local script = Instance.new('LocalScript', SellingButton)
+
+            local player = game.Players.LocalPlayer
+            
+            script.Parent.MouseButton1Click:Connect(function()
+                player.PlayerGui.AltControl.MainFrame.Pages.CreditsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.UserUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TeleportsUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.QueueUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.TogglesUi.Visible = false
+                player.PlayerGui.AltControl.MainFrame.Pages.SellingUi.Visible = true
+            end)
+        end
+        coroutine.wrap(BGKKGFT_fake_script)()
+        local function HONFA_fake_script() -- LukisControl.ToggleUi 
+            local script = Instance.new('LocalScript', LukisControl)
+
+            local player = game.Players.LocalPlayer
+            
+            player:GetMouse().KeyDown:Connect(function(K)
+                if K == "v" then
+                    if player.CoreGui.LukisControl.MainFrame.Visible == true then
+                        player.CoreGui.LukisControl.MainFrame.Visible = false
+                        print("Gui Close!")
+                    else
+                        player.CoreGui.LukisControl.Frame.Visible = true
+                        print("Gui Open!")
+                    end
+                end
+            end)
+        end
+        coroutine.wrap(HONFA_fake_script)()
+
+for i, v in pairs(getgenv().alts) do
+
+    if v == game.Players.LocalPlayer.UserId then
+
+        Clip = false
+
+        local speaker = game.Players.LocalPlayer
+        wait(0.1)
+        local function NoclipLoop()
+            if Clip == false and speaker.Character ~= nil then
+                for _, child in pairs(speaker.Character:GetDescendants()) do
+                    if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+                        child.CanCollide = false
+                    end
+                end
+            end
+        end
+        Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
+        workspace:FindFirstChildOfClass('Terrain').WaterWaveSize = 0
+        workspace:FindFirstChildOfClass('Terrain').WaterWaveSpeed = 0
+        workspace:FindFirstChildOfClass('Terrain').WaterReflectance = 0
+        workspace:FindFirstChildOfClass('Terrain').WaterTransparency = 0
+        game:GetService("Lighting").GlobalShadows = false
+        game:GetService("Lighting").FogEnd = 9e9
+        settings().Rendering.QualityLevel = 1
+        for i, v in pairs(game:GetDescendants()) do
+            if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or
+                v:IsA("TrussPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+            elseif v:IsA("Decal") then
+                v.Transparency = 1
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                v.Lifetime = NumberRange.new(0)
+            elseif v:IsA("Explosion") then
+                v.BlastPressure = 1
+                v.BlastRadius = 1
+            end
+        end
+        for i, v in pairs(game:GetService("Lighting"):GetDescendants()) do
+            if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or
+                v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+                v.Enabled = false
+            end
+        end
+        workspace.DescendantAdded:Connect(function(child)
+            coroutine.wrap(function()
+                if child:IsA('ForceField') then
+                    game:GetService('RunService').Heartbeat:Wait()
+                    child:Destroy()
+                elseif child:IsA('Sparkles') then
+                    game:GetService('RunService').Heartbeat:Wait()
+                    child:Destroy()
+                elseif child:IsA('Smoke') or child:IsA('Fire') then
+                    game:GetService('RunService').Heartbeat:Wait()
+                    child:Destroy()
+                end
+            end)()
+        end)
+
+        local timeBegan = tick()
+        for i, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("BasePart") then
+                v.Material = "SmoothPlastic"
+            end
+        end
+        for i, v in ipairs(game:GetService("Lighting"):GetChildren()) do
+            v:Destroy()
+        end
+        local timeEnd = tick() - timeBegan
+        local timeMS = math.floor(timeEnd * 1000)
+
+        local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+        local g = game
+        local w = g.Workspace
+        local l = g.Lighting
+        local t = w.Terrain
+        t.WaterWaveSize = 0
+        t.WaterWaveSpeed = 0
+        t.WaterReflectance = 0
+        t.WaterTransparency = 0
+        l.GlobalShadows = false
+        l.FogEnd = 9e9
+        l.Brightness = 0
+        settings().Rendering.QualityLevel = "Level01"
+        for i, v in pairs(g:GetDescendants()) do
+            if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+            elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+                v.Transparency = 1
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                v.Lifetime = NumberRange.new(0)
+            elseif v:IsA("Explosion") then
+                v.BlastPressure = 1
+                v.BlastRadius = 1
+            elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+                v.Enabled = false
+            elseif v:IsA("MeshPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+                v.TextureID = 10385902758728957
+            end
+        end
+        for i, e in pairs(l:GetChildren()) do
+            if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or
+                e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                e.Enabled = false
+            end
+        end
+
+        local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+        local g = game
+        local w = g.Workspace
+        local l = g.Lighting
+        local t = w.Terrain
+        t.WaterWaveSize = 0
+        t.WaterWaveSpeed = 0
+        t.WaterReflectance = 0
+        t.WaterTransparency = 0
+        l.GlobalShadows = false
+        l.FogEnd = 9e9
+        l.Brightness = 0
+        settings().Rendering.QualityLevel = "Level01"
+        for i, v in pairs(g:GetDescendants()) do
+            if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+            elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+                v.Transparency = 1
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                v.Lifetime = NumberRange.new(0)
+            elseif v:IsA("Explosion") then
+                v.BlastPressure = 1
+                v.BlastRadius = 1
+            elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+                v.Enabled = false
+            elseif v:IsA("MeshPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+                v.TextureID = 10385902758728957
+            end
+        end
+        for i, e in pairs(l:GetChildren()) do
+            if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or
+                e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                e.Enabled = false
+            end
+        end
+
+        function RandomVariable(length)
+            local res = ""
+            for i = 1, length do
+                res = res .. string.char(math.random(97, 122))
+            end
+            return res
+        end
+
+        -- GUI
+        game:GetService("RunService"):Set3dRenderingEnabled(false)
+        -- Instances:
+
+        local PSiwshuwDUItgsuiz = Instance.new("ScreenGui")
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+        local TextButton = Instance.new("TextButton")
+        local UICorner = Instance.new("UICorner")
+        local TextButton_2 = Instance.new("TextButton")
+        local UICorner_2 = Instance.new("UICorner")
+        local TextButton_3 = Instance.new("TextButton")
+        local UICorner_3 = Instance.new("UICorner")
+        local TextLabel_2 = Instance.new("TextLabel")
+        local TextLabel_3 = Instance.new("TextLabel")
+        local TextLabel_4 = Instance.new("TextLabel")
+
+        -- Properties:
+
+        PSiwshuwDUItgsuiz.Name = RandomVariable(20)
+        PSiwshuwDUItgsuiz.Parent = game.CoreGui
+        PSiwshuwDUItgsuiz.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        PSiwshuwDUItgsuiz.IgnoreGuiInset = true
+        Frame.Parent = PSiwshuwDUItgsuiz
+        Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+        Frame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+        Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Frame.Size = UDim2.new(1, 0, 1, 36)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.BorderSizePixel = 0
+        TextLabel.Position = UDim2.new(0.379002213, 0, 0.0237247907, 0)
+        TextLabel.Size = UDim2.new(0, 325, 0, 54)
+        TextLabel.Font = Enum.Font.Gotham
+        TextLabel.Text = "Luki's Alt Control"
+        TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.TextScaled = true
+        TextLabel.TextSize = 14.000
+        TextLabel.TextWrapped = true
+
+        TextButton.Parent = Frame
+        TextButton.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+        TextButton.Position = UDim2.new(0.161833167, 0, 0.12319342, 0)
+        TextButton.Size = UDim2.new(0, 274, 0, 72)
+        TextButton.Font = Enum.Font.GothamBlack
+        TextButton.Text = " Copy Discord "
+        TextButton.TextColor3 = Color3.fromRGB(220, 220, 220)
+        TextButton.TextScaled = true
+        TextButton.TextSize = 14.000
+        TextButton.TextWrapped = true
+
+        UICorner.Parent = TextButton
+
+        TextButton_2.Parent = Frame
+        TextButton_2.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+        TextButton_2.Position = UDim2.new(0.397871882, 0, 0.12319342, 0)
+        TextButton_2.Size = UDim2.new(0, 274, 0, 72)
+        TextButton_2.Font = Enum.Font.GothamBlack
+        TextButton_2.Text = "  Copy Group  "
+        TextButton_2.TextColor3 = Color3.fromRGB(220, 220, 220)
+        TextButton_2.TextScaled = true
+        TextButton_2.TextSize = 14.000
+        TextButton_2.TextWrapped = true
+
+        UICorner_2.Parent = TextButton_2
+
+        TextButton_3.Parent = Frame
+        TextButton_3.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+        TextButton_3.Position = UDim2.new(0.633166015, 0, 0.12319342, 0)
+        TextButton_3.Size = UDim2.new(0, 274, 0, 72)
+        TextButton_3.Font = Enum.Font.GothamBlack
+        TextButton_3.Text = "  Leave Game  "
+        TextButton_3.TextColor3 = Color3.fromRGB(220, 220, 220)
+        TextButton_3.TextScaled = true
+        TextButton_3.TextSize = 14.000
+        TextButton_3.TextWrapped = true
+
+        UICorner_3.Parent = TextButton_3
+
+        TextLabel_2.Parent = Frame
+        TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_2.BackgroundTransparency = 1.000
+        TextLabel_2.BorderSizePixel = 0
+        TextLabel_2.Position = UDim2.new(0.378997803, 0, 0.869513631, 0)
+        TextLabel_2.Size = UDim2.new(0, 325, 0, 54)
+        TextLabel_2.Font = Enum.Font.Gotham
+        TextLabel_2.Text = "Version 1"
+        TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_2.TextScaled = true
+        TextLabel_2.TextSize = 14.000
+        TextLabel_2.TextWrapped = true
+
+        TextLabel_3.Parent = Frame
+        TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_3.BackgroundTransparency = 1.000
+        TextLabel_3.BorderSizePixel = 0
+        TextLabel_3.Position = UDim2.new(0.161833152, 0, 0.290628701, 0)
+        TextLabel_3.Size = UDim2.new(0, 907, 0, 54)
+        TextLabel_3.Font = Enum.Font.GothamBlack
+        TextLabel_3.Text = "Name: HOLDERRR"
+        TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_3.TextSize = 49.000
+        TextLabel_3.TextWrapped = true
+        TextLabel_3.TextXAlignment = Enum.TextXAlignment.Left
+
+        TextLabel_4.Parent = Frame
+        TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_4.BackgroundTransparency = 1.000
+        TextLabel_4.BorderSizePixel = 0
+        TextLabel_4.Position = UDim2.new(0.161833152, 0, 0.371293008, 0)
+        TextLabel_4.Size = UDim2.new(0, 907, 0, 54)
+        TextLabel_4.Font = Enum.Font.GothamBlack
+        TextLabel_4.Text = "Money: HOLDER"
+        TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_4.TextSize = 49.000
+        TextLabel_4.TextWrapped = true
+        TextLabel_4.TextXAlignment = Enum.TextXAlignment.Left
+
+        -- Scripts:
+
+        local function XCBMJ_fake_script() -- Frame.LocalScript 
+            local script = Instance.new('LocalScript', Frame)
+
+            local StarterGui = game:GetService("StarterGui")
+            StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
+
+            local StarterGui = game:GetService("StarterGui")
+            StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
+
+            local StarterGui = game:GetService("StarterGui")
+            StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
+            StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+
+            local StarterGui = game:GetService("StarterGui")
+            StarterGui:SetCore("TopbarEnabled", false)
+
+            local UIS = game:GetService("UserInputService")
+            UIS.ModalEnabled = true
+        end
+        coroutine.wrap(XCBMJ_fake_script)()
+        local function PPEQE_fake_script() -- TextButton.LocalScript 
+            local script = Instance.new('LocalScript', TextButton)
+
+            local button = script.Parent
+
+            function leftClick()
+                setclipboard("https://discord.gg/gGbq6jGjAS")
+            end
+
+            button.MouseButton1Click:Connect(leftClick)
+        end
+        coroutine.wrap(PPEQE_fake_script)()
+        local function CDDHNKJ_fake_script() -- TextButton_2.LocalScript 
+            local script = Instance.new('LocalScript', TextButton_2)
+
+            local button = script.Parent
+
+            function leftClick()
+                setclipboard(
+                    "https://www.roblox.com/groups/12096412/Cash-Central#!/about")
+            end
+
+            button.MouseButton1Click:Connect(leftClick)
+        end
+        coroutine.wrap(CDDHNKJ_fake_script)()
+        local function RUQFMCI_fake_script() -- TextButton_3.LocalScript 
+            local script = Instance.new('LocalScript', TextButton_3)
+
+            local button = script.Parent
+
+            function leftClick()
+                game.Players.LocalPlayer:Kick('Left game succcessfully.')
+            end
+
+            button.MouseButton1Click:Connect(leftClick)
+        end
+        coroutine.wrap(RUQFMCI_fake_script)()
+        local function PJZGR_fake_script() -- TextLabel_3.LocalScript 
+            local script = Instance.new('LocalScript', TextLabel_3)
+
+            local text = script.Parent
+
+            text.Text = "Name: " .. game.Players.LocalPlayer.Name
+        end
+        coroutine.wrap(PJZGR_fake_script)()
+        local function WDTSQEC_fake_script() -- TextLabel_4.LocalScript 
+            local script = Instance.new('LocalScript', TextLabel_4)
+
+            local text = script.Parent
+
+            while wait() do
+                text.Text = "Money: " ..game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.MoneyText.Text
+            end
+        end
+        coroutine.wrap(WDTSQEC_fake_script)()
+
+        local RunService = game:GetService("RunService")
+        local MaxFPS = getgenv().altFPS
+        while true do
+            local t0 = tick()
+            RunService.Heartbeat:Wait()
+            repeat
+            until (t0 + 1 / MaxFPS) < tick()
+        end
+    end
+end
+
+else
+game.Players.LocalPlayer:Kick("An error has ocurred, please contact luki#0069")
+end        
+end
